@@ -1,0 +1,19 @@
+﻿extends layout
+
+block content
+  h1= title
+  if bookinstance_list.length
+    ul
+      each instance in bookinstance_list
+        li
+          a(href=instance.url)= instance.book.title
+          |  - 
+          span(class={
+            'text-success': instance.status === 'Available',
+            'text-danger': instance.status === 'Maintenance',
+            'text-warning': instance.status !== 'Available' && instance.status !== 'Maintenance'
+          })= instance.status
+          if instance.status !== 'Available'
+            |  (Due: #{instance.due_back_formatted})
+  else
+    p Екземплярів книг не знайдено

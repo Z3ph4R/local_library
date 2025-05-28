@@ -1,0 +1,16 @@
+﻿extends layout
+
+block content
+  h1= title
+  p Ласкаво просимо до #[em Місцевої бібліотеки], базового веб-сайту на Express, розробленого як навчальний приклад.
+
+  h2 Динамічний вміст
+
+  p Бібліотека має наступну кількість записів:
+
+  ul
+    li #[strong Книги:] !{book_count}
+    li #[strong Примірники:] !{book_instance_count}
+    li #[strong Доступні примірники:] !{book_instance_available_count}
+    li #[strong Автори:] !{author_count}
+    li #[strong Жанри:] !{genre_count}

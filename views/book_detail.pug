@@ -1,0 +1,23 @@
+﻿extends layout
+
+block content
+  h1= title
+  p #[strong Автор:] 
+    a(href=book.author.url) #{book.author.name}
+  p #[strong Жанр:] 
+    each genre, index in book.genre
+      a(href=genre.url) #{genre.name}
+      if index < book.genre.length - 1
+        |, 
+  
+  hr
+  h4 Примірники
+  if book_instances.length
+    ul
+      each instance in book_instances
+        li
+          | #{instance.status} 
+          if instance.status!='Available'
+            | (Повернення: #{instance.due_back_formatted})
+  else
+    p Немає доступних примірників цієї книги
